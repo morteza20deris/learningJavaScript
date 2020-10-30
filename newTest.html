@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <style>
+        .btn{
+            width: 90px;
+            height: 40px;
+            border-radius: 4px;
+            border:2px solid black;
+            text-align: center;
+            cursor: pointer;
+        }
+        .box{
+            width: 900px;
+            height: 900px;
+            border-radius: 4px;
+            border: 2px solid grey;
+            display: flex;
+            /* flex-wrap: wrap; */
+            overflow-y: scroll;
+            /* overflow-wrap: normal; */
+        }
+        .circle{
+            width: 100px;
+            height: 100px;
+            background-color: khaki;
+            border-radius: 50px;
+            
+            margin: 5px;
+        }
+        .square{
+            width: 100px;
+            height: 100px;
+            background-color: khaki;
+            border-radius: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <button id="addBtn" type="button">Add Button</button> -->
+    <div id="addsqr" class="btn">Add aquare</div> 
+    <div id="addcircle" class="btn">Add circle</div> 
+    <div id="clr" class="btn">clear</div>
+    <div class="box"></div>  
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+        $("#addcircle").click(function(){
+            $(".box").append("<div class='circle'></div>")
+        })
+        $("#addsqr").click(function(){
+            $(".box").append("<div class='square'></div>")
+        })
+        $("#clr").click(function(){
+            $(".box").empty()
+        })
+    })
+    
+</script>
