@@ -1,12 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning JS</title>
     <script src="jquery.min.js"></script>
+    <style>
+        .btn {
+            text-align: center;
+            border: 3px solid blue;
+            width: 90px;
+            height: 40px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .box {
+            width: 500px;
+            height: 500px;
+            border: 10px solid grey;
+            overflow-y: scroll;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .square {
+            width: 200px;
+            height: 200px;
+            background-color: hotpink;
+            margin: 10px;
+        }
+
+        .circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 100px;
+            background: hotpink;
+            margin: 10px;
+        }
+
+        #star-five {
+            margin: 10px;
+            margin-top: 60px;
+            margin-bottom: 60px;
+            position: relative;
+            display: block;
+            color: hotpink;
+            width: 0px;
+            height: 0px;
+            border-right: 100px solid transparent;
+            border-bottom: 70px solid hotpink;
+            border-left: 100px solid transparent;
+            transform: rotate(35deg);
+        }
+
+        #star-five:before {
+            border-bottom: 80px solid hotpink;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            position: absolute;
+            height: 0;
+            width: 0;
+            top: -45px;
+            left: -65px;
+            display: block;
+            content: '';
+            transform: rotate(-35deg);
+        }
+
+        #star-five:after {
+            position: absolute;
+            display: block;
+            color: hotpink;
+            top: 3px;
+            left: -105px;
+            width: 0px;
+            height: 0px;
+            border-right: 100px solid transparent;
+            border-bottom: 70px solid hotpink;
+            border-left: 100px solid transparent;
+            transform: rotate(-70deg);
+            content: '';
+        }
+    </style>
 </head>
+
 <body>
-    <div class="btn">make square</div>
+    <div id="squarebtn" class="btn">make square</div>
+    <div id="circlebtn" class="btn">make circle</div>
+    <div id="starbtn" class="btn">make star</div>
+    <div id="clearbtn" class="btn">clear box</div>
+    <div class="box"></div>
 </body>
+
 </html>
+<script>
+    $(document).ready(function () {
+        $("#squarebtn").click(function () {
+            $(".box").append("<div class='square'></div>")
+        })
+        $("#starbtn").click(function () {
+            $(".box").append("<div id='star-five'></div>")
+
+        })
+        $("#circlebtn").click(function(){
+            $(".box").append("<div class='circle'></div>")
+        })
+        $("#clearbtn").click(function(){
+            $(".box").empty()
+        })
+    })
+</script>
