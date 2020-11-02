@@ -21,6 +21,12 @@
         .item{
             color: blue;
         }
+        .delete{
+            margin-left: 5px;
+        }
+        .done{
+
+        }
         
     </style>
 </head>
@@ -29,15 +35,28 @@
         <h1>To-Do List</h1>
         <input id="inputItem" type="text" placeholder="Add an item!">
         <button id="submitbtn">Submit</button>
-        <button>Clear List</button>
+        <button id="clearbtn">Clear List</button>
     </div>
-    <div id="content" class="box">
-        
+    <div class="box">
+        <ol id="content">
+
+        </ol>
     </div>
 </body>
 </html>
 <script>
     $("#submitbtn").click(function(){
-        $("#content").append("<div class='item'></div>")
+        $("#content").append('<li><span>'+
+            document.getElementById('inputItem').value+
+            '</span><button id="delete" class="delete">X</button><button class="done">Done</button>'
+            +'</li>'
+        )
+    })
+    $("#clearbtn").click(function(){
+        $("#content").empty()
+    })
+    $("#delete").click(function(){
+        
+  
     })
 </script>
