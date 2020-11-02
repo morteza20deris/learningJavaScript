@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOTO App</title>
     <script src="jquery.min.js"></script>
     <style>
-        .box{
+        .box {
             width: auto;
             height: fit-content;
             margin-left: 10%;
@@ -18,24 +19,27 @@
             text-align: center;
             margin-top: 10px;
         }
-        .item{
+
+        .item {
             color: blue;
         }
-        .delete{
+
+        .delete {
             margin-left: 5px;
         }
-        .done{
 
+        .donetxt {
+            text-decoration: line-through;
         }
-        
     </style>
 </head>
+
 <body>
     <div class="box">
         <h1>To-Do List</h1>
         <input id="inputItem" type="text" placeholder="Add an item!">
         <button id="submitbtn">Submit</button>
-        <button  id="clearbtn">Clear List</button>
+        <button id="clearbtn">Clear List</button>
     </div>
     <div class="box">
         <ol id="content">
@@ -43,25 +47,38 @@
         </ol>
     </div>
 </body>
+
 </html>
 <script>
-    $(document).ready(function(){
-        function listener (){
-                $(this).parent().remove();
-  
+    $(document).ready(function () {
+        function listener() {
+            // $(this).parent().remove();
+            alert("salam");
+
         }
-        $("#submitbtn").click(function(){
-            var input =$("#inputItem").val();
-            $("#content").append("<li>"
-              +input+
-                "<button onclick='listener()' id='delete' class='delete'>X</button><button class='done'>Done</button>"
-             +"</li>"
+        $("#submitbtn").click(function () {
+            var input = $("#inputItem").val();
+            var done = $("<button class='done'>Done</button>")
+            var delbtn = $("<button id='delete' class='delete'>X</button>")
+            var li = $("<li><span>" + input + "</span></li>")
+            done.click(function(){
+                $(this).parent().find("span").toggleClass("donetxt")
+            })
+            delbtn.click(function () {
+                $(this).parent().remove();
+            })
+            li.append(delbtn)
+            li.append(done)
+
+            $("#content").append(
+                li
             )
-            
-     })
-        $("#clearbtn").click(function(){
-         $("#content").empty()
+
         })
-        
+        $("#clearbtn").click(function () {
+            $("#content").empty()
+
+        })
+
     })    
 </script>
