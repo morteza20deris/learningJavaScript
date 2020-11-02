@@ -35,7 +35,7 @@
         <h1>To-Do List</h1>
         <input id="inputItem" type="text" placeholder="Add an item!">
         <button id="submitbtn">Submit</button>
-        <button id="clearbtn">Clear List</button>
+        <button  id="clearbtn">Clear List</button>
     </div>
     <div class="box">
         <ol id="content">
@@ -45,18 +45,23 @@
 </body>
 </html>
 <script>
-    $("#submitbtn").click(function(){
-        $("#content").append('<li><span>'+
-            document.getElementById('inputItem').value+
-            '</span><button id="delete" class="delete">X</button><button class="done">Done</button>'
-            +'</li>'
-        )
-    })
-    $("#clearbtn").click(function(){
-        $("#content").empty()
-    })
-    $("#delete").click(function(){
-        
+    $(document).ready(function(){
+        function listener (){
+                $(this).parent().remove();
   
-    })
+        }
+        $("#submitbtn").click(function(){
+            var input =$("#inputItem").val();
+            $("#content").append("<li>"
+              +input+
+                "<button onclick='listener()' id='delete' class='delete'>X</button><button class='done'>Done</button>"
+             +"</li>"
+            )
+            
+     })
+        $("#clearbtn").click(function(){
+         $("#content").empty()
+        })
+        
+    })    
 </script>
