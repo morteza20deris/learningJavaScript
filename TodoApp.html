@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOTO App</title>
+    <script src="jquery.min.js"></script>
+    <style>
+        .box{
+            width: auto;
+            height: fit-content;
+            margin-left: 10%;
+            padding-bottom: 40px;
+            padding-top: 40px;
+            margin-right: 10%;
+            border: 5px solid black;
+            border-radius: 50px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .item{
+            color: blue;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>To-Do List</h1>
+        <input id="inputItem" type="text" placeholder="Add an item!">
+        <button id="submitbtn">Submit</button>
+        <button>Clear List</button>
+    </div>
+    <div id="content" class="box">
+        
+    </div>
+</body>
+</html>
+<script>
+    $("#submitbtn").click(function(){
+        $("#content").append("<div class='item'></div>")
+    })
+</script>
