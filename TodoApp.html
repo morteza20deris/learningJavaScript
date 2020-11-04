@@ -14,7 +14,7 @@
             padding-bottom: 40px;
             padding-top: 40px;
             margin-right: 10%;
-            border: 5px solid black;
+            border: 5px solid transparent;
             border-radius: 50px;
             text-align: center;
             margin-top: 10px;
@@ -31,7 +31,9 @@
         .donetxt {
             text-decoration: line-through;
         }
+
     </style>
+  
 </head>
 
 <body>
@@ -46,6 +48,8 @@
 
         </ol>
     </div>
+
+    
 </body>
 
 </html>
@@ -61,11 +65,30 @@
             var done = $("<button class='done'>Done</button>")
             var delbtn = $("<button id='delete' class='delete'>X</button>")
             var li = $("<li><span>" + input + "</span></li>")
-            done.click(function(){
+            if($(".box").children().length === 0){
+                $(".box").css({
+                    border: "5px solid transparent"
+                })
+            }else{
+                $(".box").css({
+                    border: "5px solid black"
+                })
+            }
+            done.click(function () {
                 $(this).parent().find("span").toggleClass("donetxt")
             })
             delbtn.click(function () {
                 $(this).parent().remove();
+                console.log($(".box").children().length)
+                if($(".box").children().length === 0){
+                $(".box").css({
+                    border: "5px solid transparent"
+                })
+            }else{
+                $(".box").css({
+                    border: "5px solid black"
+                })
+            }
             })
             li.append(delbtn)
             li.append(done)
