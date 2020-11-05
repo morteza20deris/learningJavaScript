@@ -15,26 +15,85 @@
             text-align: center;
             color: green;
         }
+        #names{
+            /* width: 80%; */
+            /* margin-right: 10%; */
+            /* margin-left: 10%; */
+        }
         #name{
-            text-align: center;
-            width: 100%;
+            /* text-align: center; */
+            margin-left: 10%;
+            /* width: 55px; */
             color: darkslategrey;
+            display: inline-block;
             
         }
         #expenseinput{
-            width: 80%;
+            width: 70%;
+            /* margin-right: 10%; */
+            /* margin-left: 20%; */
+            display: inline-block;
 
         }
+        
         #date{
             color: darkslategrey;
+            display: inline-block;
+            margin-left: 10%;
+            width: 40%;
+            
+            
         }
+        #amount{
+            color: darkslategrey;
+            display: inline-block;
+            width: 40%;
+
+        }
+        #dateinput{
+            width: 80%;
+        }
+        #amountinput{
+            width: 80%;
+        }
+        #addbtn{
+            width: 10%;
+            margin-left: 45%;
+            margin-right: 45%;
+            height: 6%;
+            color: white;
+            background-color: green;
+            border-radius: 9px;
+            margin-bottom: 30px;
+        }
+        table {
+            width:80%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+
+
+        
     </style>
 </head>
 
 <body>
     <h1 id="header1">Expense Tracker</h1>
     <h3 id="header2">Add A New Item</h3>
-    <h3 id="name">Name: <input id="expenseinput" type="text" placeholder="Where was the expense made?"> </h3>
+    <var id="names">
+        <h3 id="name">Name: </h3>
+        <input style="margin-right: 10%;" id="expenseinput" type="text" placeholder="Where was the expense made?">
+    </var>
+    <br>
     <h3 id="date">date: <input id="dateinput" type="date"></h3>
     <h3 id="amount">Amount: <input id="amountinput" type="number" name="" id=""></h3>
     <button id="addbtn">Add Expense</button>
@@ -43,6 +102,11 @@
             <th>Name</th>
             <th>Date</th>
             <th>Amount</th>
+        </tr>
+        <tr style="background-color: ivory;">
+            <th>Morteza</th>
+            <th>7/1/76</th>
+            <th>$25</th>
         </tr>
     </table>
 </body>

@@ -31,9 +31,8 @@
         .donetxt {
             text-decoration: line-through;
         }
-
     </style>
-  
+
 </head>
 
 <body>
@@ -49,7 +48,7 @@
         </ol>
     </div>
 
-    
+
 </body>
 
 </html>
@@ -65,31 +64,35 @@
             var done = $("<button class='done'>Done</button>")
             var delbtn = $("<button id='delete' class='delete'>X</button>")
             var li = $("<li><span>" + input + "</span></li>")
-            if($(".box").children().length === 0){
+
+            if ($(".box").children().length === 0) {
                 $(".box").css({
                     border: "5px solid transparent"
                 })
-            }else{
+            } else {
                 $(".box").css({
                     border: "5px solid black"
                 })
             }
+
             done.click(function () {
                 $(this).parent().find("span").toggleClass("donetxt")
             })
+
             delbtn.click(function () {
                 $(this).parent().remove();
                 console.log($(".box").children().length)
-                if($(".box").children().length === 0){
-                $(".box").css({
-                    border: "5px solid transparent"
-                })
-            }else{
-                $(".box").css({
-                    border: "5px solid black"
-                })
-            }
+                if ($(".box").children().length === 0) {
+                    $(".box").css({
+                        border: "5px solid transparent"
+                    })
+                } else {
+                    $(".box").css({
+                        border: "5px solid black"
+                    })
+                }
             })
+            
             li.append(delbtn)
             li.append(done)
 
