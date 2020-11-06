@@ -1,0 +1,131 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Expense App</title>
+    <script src="jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <style>
+        h1 {
+            text-align: center;
+            font-family: "Lato";
+            color: darkslategrey;
+            /* font-size: 250%; */
+        }
+
+        h2 {
+            text-align: center;
+            color: green;
+            font-family: "Lato";
+            /* font-size: 200%; */
+        }
+
+        .namess {
+            text-align: center;
+            /* margin-left: 100px; */
+            /* font-family: "Lato"; */
+        }
+
+        .nameInput {
+            width: 370px;
+            font-family: "Lato";
+            margin-bottom: 1px;
+            /* display: block; */
+            /* box-sizing: border-box; */
+            /* text-align: center; */
+        }
+
+        span {
+            font-family: "Lato";
+            margin: 5px;
+        }
+
+        .date {
+            margin-left: 10px;
+            /* display: inline-block; */
+            /* display: block; */
+            /* box-sizing: border-box; */
+        }
+
+        .dateInput {
+            width: 145px;
+            font-family: "Lato";
+            
+        }
+
+        .amountInput {
+            width: 146px;
+            font-family: "Lato";
+        }
+
+        .centerbtn {
+            /* background-color: green; */
+            text-align: center;
+            /* margin-left: 40%; */
+            margin-top: 2px;
+        }
+        .addbtn{
+            background-color: green;
+            font-family: "Lato";
+            height: 30px;
+            border-radius: 8px;
+            
+        }
+        table , th , td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        table{
+            width: 100%;
+        }
+        th,td{
+            padding: 9px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Learn Expense App </h1>
+    <h2> Add A New item </h2>
+    <div class="namess"><span class="name">Name : </span><input class="nameInput" type="text"></div>
+    <br>
+    <div class="namess">
+        <span class="date">Date : </span><input class="dateInput" type="date">
+        <span>Amount :</span><input class="amountInput" type="number">
+    </div>
+    <br>
+    <div class="centerbtn"><button class="addbtn">Add Expense</button></div>
+    <br>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Amount</th>
+        </tr>
+    </table>
+</body>
+
+</html>
+<script>
+    $(document).ready(function () {
+        $(".addbtn").click(function(){
+            var nameInput = $(".nameInput").val();
+            var dateInput = $(".dateInput").val();
+            var amountInput ="$"+ $(".amountInput").val();
+            $(".table").append(
+                "<tr>"+
+                    "<th>"+
+                        nameInput+
+                    "</th>"+
+                    "<th>"+
+                        dateInput+
+                    "</th>"+
+                    "<th>"+
+                        amountInput+
+                    "</th>"+
+                "</tr>"
+            )
+        })
+    })
+</script>

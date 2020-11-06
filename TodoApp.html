@@ -1,110 +1,163 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOTO App</title>
+    <title>ToDo App</title>
     <script src="jquery.min.js"></script>
     <style>
         .box {
-            width: auto;
-            height: fit-content;
-            margin-left: 10%;
-            padding-bottom: 40px;
-            padding-top: 40px;
+            border: 5px solid black;
+            border-radius: 5px;
             margin-right: 10%;
-            border: 5px solid transparent;
-            border-radius: 50px;
+            margin-left: 10%;
+            height: fit-content;
+            padding-top: 5%;
+            padding-bottom: 5%;
+        }
+
+        .headtxt {
             text-align: center;
-            margin-top: 10px;
+            color: darkslategrey;
         }
 
-        .item {
-            color: blue;
+        .inputTxt {
+            /* margin-left: 10%; */
+            border-radius: 5px;
+            width: 30%;
+            height: 5%;
         }
 
-        .delete {
-            margin-left: 5px;
+        #submitbtn {
+            color: white;
+            background-color: green;
+            border-radius: 7px;
+            height: 5.4%;
+            width: fit-content;
+
+        }
+
+        .test {
+            text-align: center;
+        }
+
+        .itemstxtVal{
+            font-size: 100%;
+        }
+        li{
+            font-size: 250%;
+        }
+
+        .itemsBox {
+            border: 5px solid transparent;
+            border-radius: 5px;
+            margin-right: 10%;
+            margin-left: 10%;
+            margin-top: 1%;
+            height: fit-content;
+            padding-top: 5%;
+            padding-bottom: 5%;
+            overflow-x: auto;
+        }
+
+        .items {
+            text-align: center;
+        }
+
+        #delbtn {
+            margin-left: 1%;
+            border-radius: 5px;
+            background-color: rgb(218, 216, 216);
+            width: fit-content;
+            height: fit-content;
+            font-size: 40px;
+        }
+
+        #donebtn {
+            border-radius: 5px;
+            background-color: rgb(218, 216, 216);
+            width: fit-content;
+            height: fit-content;
+            font-size: 100%;
         }
 
         .donetxt {
             text-decoration: line-through;
         }
     </style>
-
 </head>
 
 <body>
     <div class="box">
-        <h1>To-Do List</h1>
-        <input id="inputItem" type="text" placeholder="Add an item!">
-        <button id="submitbtn">Submit</button>
-        <button id="clearbtn">Clear List</button>
+        <h1 class="headtxt">To Do App</h1>
+        <div class="test">
+            <input type="text" id="inputTxt" class="inputTxt">
+            <button id="submitbtn">Submit</button>
+        </div>
     </div>
-    <div class="box">
-        <ol id="content">
-
-        </ol>
+    <div class="itemsBox">
+        <ol class="items"></ol>
     </div>
-
-
 </body>
 
 </html>
 <script>
     $(document).ready(function () {
-        function listener() {
-            // $(this).parent().remove();
-            alert("salam");
 
-        }
+        var input = document.getElementById("inputTxt");
+        input.addEventListener("keyup", function(event){
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("submitbtn").click();
+            }
+        });
+
+
         $("#submitbtn").click(function () {
-            var input = $("#inputItem").val();
-            var done = $("<button class='done'>Done</button>")
-            var delbtn = $("<button id='delete' class='delete'>X</button>")
-            var li = $("<li><span>" + input + "</span></li>")
+            var input = $(".inputTxt").val();
+            
+            var delbtn = $("<button id='delbtn'>X</button>")
+            var donebtn = $("<button id='donebtn'>done</button>")
 
-            if ($(".box").children().length === 0) {
-                $(".box").css({
-                    border: "5px solid transparent"
-                })
-            } else {
-                $(".box").css({
-                    border: "5px solid black"
-                })
+            if (input.length > 0 && input.val !== null) {
+                var li = $("<li><span class='itemstxtVal'>" + input + "</span></li>");
             }
 
-            done.click(function () {
-                $(this).parent().find("span").toggleClass("donetxt")
-            })
+
 
             delbtn.click(function () {
                 $(this).parent().remove();
-                console.log($(".box").children().length)
-                if ($(".box").children().length === 0) {
-                    $(".box").css({
-                        border: "5px solid transparent"
-                    })
+                var itemscount = $('.itemsBox ol li').length;
+                if (itemscount > 0) {
+                    $(".itemsBox").css({ border: "5px solid black" })
                 } else {
-                    $(".box").css({
-                        border: "5px solid black"
-                    })
+                    $(".itemsBox").css({ border: "5px solid transparent" })
                 }
             })
-            
-            li.append(delbtn)
-            li.append(done)
 
-            $("#content").append(
+            donebtn.click(function () {
+                $(this).parent().find("span").toggleClass("donetxt");
+            })
+
+            li.append(delbtn);
+            li.append(donebtn);
+
+            $(".items").append(
                 li
             )
 
-        })
-        $("#clearbtn").click(function () {
-            $("#content").empty()
+            var itemscount = $('.itemsBox ol li').length;
+            if (itemscount > 0) {
+                $(".itemsBox").css({ border: "5px solid black" })
+            } else {
+                $(".itemsBox").css({ border: "5px solid transparent" })
+            }
+
+
 
         })
 
-    })    
+
+
+    })
 </script>
