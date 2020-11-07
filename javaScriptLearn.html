@@ -126,15 +126,15 @@
         })
 
         $(".addbtn").click(function () {
-            var nameInput = $(".nameInput").text();
+            var nameInput = $(".nameInput").val();
             // alert(nameInput);
                 var dateInput = $(".dateInput").val();
                 var amountInput = $(".amountInput").val();
-            if (nameInput != null && dateInput != null && amountInput != null) {
+            if (nameInput != "" && nameInput.replace(/\s/g, '').length > 0 && dateInput != "" && amountInput != "") {
 
 
-                var nameInput = $(".nameInput").val();
-                var dateInput = $(".dateInput").val();
+                // var nameInput = $(".nameInput").val();
+                // var dateInput = $(".dateInput").val();
                 var amountInput = "$" + $(".amountInput").val();
                 var delBtn = "<button class='delbtn'>X</button>"
                 $(".table").append(
