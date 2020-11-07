@@ -51,7 +51,7 @@
         .dateInput {
             width: 145px;
             font-family: "Lato";
-            
+
         }
 
         .amountInput {
@@ -65,21 +65,28 @@
             /* margin-left: 40%; */
             margin-top: 2px;
         }
-        .addbtn{
+
+        .addbtn {
             background-color: green;
             font-family: "Lato";
             height: 30px;
             border-radius: 8px;
-            
+
         }
-        table , th , td{
+
+        table,
+        th,
+        td {
             border: 1px solid black;
             border-collapse: collapse;
         }
-        table{
+
+        table {
             width: 100%;
         }
-        th,td{
+
+        th,
+        td {
             padding: 9px;
         }
     </style>
@@ -92,7 +99,7 @@
     <br>
     <div class="namess">
         <span class="date">Date : </span><input class="dateInput" type="date">
-        <span>Amount :</span><input class="amountInput" type="number">
+        <span>Amount :</span><input id="amountInput" class="amountInput" type="number">
     </div>
     <br>
     <div class="centerbtn"><button class="addbtn">Add Expense</button></div>
@@ -109,23 +116,52 @@
 </html>
 <script>
     $(document).ready(function () {
-        $(".addbtn").click(function(){
-            var nameInput = $(".nameInput").val();
-            var dateInput = $(".dateInput").val();
-            var amountInput ="$"+ $(".amountInput").val();
-            $(".table").append(
-                "<tr>"+
-                    "<th>"+
-                        nameInput+
-                    "</th>"+
-                    "<th>"+
-                        dateInput+
-                    "</th>"+
-                    "<th>"+
-                        amountInput+
-                    "</th>"+
-                "</tr>"
-            )
+
+        var input = document.getElementById("amountInput");
+        input.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                $(".addbtn").click();
+            }
         })
+
+        $(".addbtn").click(function () {
+            var nameInput = $(".nameInput").text();
+            // alert(nameInput);
+                var dateInput = $(".dateInput").val();
+                var amountInput = $(".amountInput").val();
+            if (nameInput != null || dateInput != null || amountInput != null) {
+
+
+                var nameInput = $(".nameInput").val();
+                var dateInput = $(".dateInput").val();
+                var amountInput = "$" + $(".amountInput").val();
+                var delBtn = "<button class='delbtn'>X</button>"
+                $(".table").append(
+                    "<tr>" +
+                    "<th>" +
+                    nameInput +
+                    "</th>" +
+                    "<th>" +
+                    dateInput +
+                    "</th>" +
+                    "<th>" +
+                    amountInput +
+                    "</th>" +
+                    "<th>" +
+                    delBtn +
+                    "</th>" +
+                    "</tr>"
+
+                )
+                $(".delbtn").click(function () {
+                    $(this).parent().parent().remove();
+                    // alert("deleted");
+                })
+            }
+
+        })
+
+
     })
 </script>
